@@ -1,6 +1,6 @@
 TODO - add more details (e.g. used technology for rest documentation)
 
-![](img/restApi1.png)
-![](img/restApiDetailsReq1.png)
-![](img/restApiDetailsReq2.png)
-![](img/restApiDetailsResponse.png)
+![Possible_requests](img/restApi1.png)
+![Request_1](img/restApiDetailsReq1.png)
+![Request_2](img/restApiDetailsReq2.png)
+![Response](img/restApiDetailsResponse.png)

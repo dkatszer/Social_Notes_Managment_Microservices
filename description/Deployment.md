@@ -1,3 +1,3 @@
 TODO - add more details
 
-![Ng Scripts](img/ui_deploy.png)
+![NgScripts](img/ui_deploy.png)
