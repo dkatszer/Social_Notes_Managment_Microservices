@@ -1,0 +1,29 @@
+<app-notes-section
+  *ngIf="favoriteNotes"
+  [notes]="favoriteNotes"
+  [iconName]="'favorite'"
+  [title]="'Favorite Notes'"
+  [route]="'favorite'">
+</app-notes-section>
+<app-notes-section
+  *ngIf="ownerNotes"
+  [notes]="ownerNotes"
+  [iconName]="'person pin'"
+  [title]="'My Notes'"
+  [route]="'owner'">
+</app-notes-section>
+<app-notes-section
+  *ngIf="friendsNotes"
+  [notes]="friendsNotes"
+  [iconName]="'people'"
+  [title]="'Friend\'s Notes'"
+  [route]="'friends'">
+</app-notes-section>
+<app-notes-section
+  *ngIf="publicNotes"
+  [notes]="publicNotes"
+  [iconName]="'public'"
+  [title]="'Public Notes'"
+  [route]="'public'">
+</app-notes-section>
+<app-new-note-form></app-new-note-form>

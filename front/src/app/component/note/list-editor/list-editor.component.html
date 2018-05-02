@@ -1,0 +1,15 @@
+<form [formGroup]="sectionsForm" >
+  <div formArrayName="items">
+    <div *ngFor="let section of items.controls; let i=index" [formGroupName]="i">
+      <!--repeted group-->
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="title" placeholder="Section name" required>
+      </mat-form-field>
+    </div>
+  </div>
+  <button (click)="addNewSection()" type="button"  mat-icon-button  color="primary"><mat-icon>add</mat-icon></button>
+  <button mat-icon-button color="warn" (click)="removeLastSection()">
+    <mat-icon>clear</mat-icon>
+  </button>
+  <button type="submit" (click)="onSubmit()" mat-icon-button color="accent"><mat-icon>save</mat-icon></button>
+</form>

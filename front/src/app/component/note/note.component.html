@@ -1,0 +1,20 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-sidenav-container class="sections-sidenav-container" fxFlex="85%">
+    <mat-sidenav #sidenav mode="side" class="sections-sidenav" opened="true">
+      <button mat-raised-button color="accent" (click)="routeToSecListEdit()" *ngIf="isCurrUserAnAuthor">Edit - todo add only author visible</button>
+      <mat-nav-list *ngIf="isEditable === false">
+        <a mat-list-item *ngFor="let section of sections"
+           (click)="selectSection(section)"
+            routerLink="/notes/{{noteId}}/sections/{{section.seqNumber}}" routerLinkActive="active">{{section.title}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="sidenav-content">
+      <mat-toolbar class="header" id="sectionHeader" *ngIf="selectedSection">{{selectedSection.title | uppercase}}
+      </mat-toolbar>
+      <!-- todo fix error with higlighting - change to routing ? fix mat-toolbar above during changes sections-->
+      <app-note-content *ngIf="isEditable === false" [isCurrUserAnAuthor]="isCurrUserAnAuthor"></app-note-content>
+      <app-note-editor *ngIf="isEditable === true && isCurrUserAnAuthor"></app-note-editor>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

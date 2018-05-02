@@ -1,0 +1,16 @@
+<button mat-raised-button color="accent" (click)="editSection()" *ngIf="isCurrUserAnAuthor">Edit - todo add only author visible</button>
+<div class="content-viewer" fxLayout="row">
+  <div fxFlex="85%">
+    <div [froalaView]="content" highlight-js-content=".highlight" *ngIf="content"></div>
+    <!--<sn-scroll-spy-section *ngFor="let subsec of subsecs" id="{{subsec.id}}" [attr.id]="subsec.id" for="subsec-content-list" class="subsection" >-->
+      <!--<h3>{{subsec.title}}</h3>-->
+      <!--<p>{{subsec.content}}</p>-->
+    <!--</sn-scroll-spy-section>-->
+  </div>
+  <mat-nav-list snScrollSpy id="subsec-content-list" class="toc scroll-spied-list">
+    <a mat-list-item *ngFor="let subsec of subsecs"
+       snScrollSpyItem for="subsec-content-list" href="#subsec{{subsec.seqNumber}}" [ngClass]="subsec.subLevel == 0 ? 'toc-root' : 'toc-sub'"
+       pageScroll >{{subsec.title}}</a>
+  </mat-nav-list>
+</div>
+<!--(click)="goToAnchor(subsec.seqNumber)" -->

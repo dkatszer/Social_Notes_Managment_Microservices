@@ -1,0 +1,28 @@
+spring:
+  profiles.active: dev
+  jackson.serialization.WRITE_DATES_AS_TIMESTAMPS: false
+  application.name: notes
+
+server:
+  port: 8091
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} --- [%thread] %-5level  --- [%logger{36}] - %msg%n"
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    platform: h2
+#    schema: classpath:/sql/schema-h2.sql
+#    data: classpath:/sql/data-h2.sql
+  h2:
+    console:
+      enabled: true
+      path: /console

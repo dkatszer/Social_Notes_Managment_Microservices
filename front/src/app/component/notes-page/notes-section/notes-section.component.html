@@ -1,0 +1,16 @@
+<mat-card class="notes-section">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>{{iconName}}</mat-icon>
+    </div>
+    <mat-card-title>{{title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="notes-section-wrapper" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="notes" fxLayoutWrap>
+      <app-note-mini *ngFor="let note of notes" [note]="note"></app-note-mini>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="route" color="primary">More</button>
+  </mat-card-actions>
+</mat-card>

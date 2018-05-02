@@ -1,0 +1,15 @@
+@import "../../../variables.scss";
+
+.active {
+  colro: $warn;
+}
+mat-sidenav-content {
+  padding: 10px 20px;
+}
+mat-nav-list {
+  background-color: $primary;
+  border-top: 1px solid $primary-contrast;
+  /deep/ .mat-list-item-content{
+    color: $primary-contrast
+  }
+}

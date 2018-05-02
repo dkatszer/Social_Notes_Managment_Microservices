@@ -1,0 +1,27 @@
+@import "../../../../variables.scss";
+.toc{
+  position: fixed;
+  top: $navbar-height;
+  right: 0;
+  width: 15%;
+  margin-top: 20px;
+
+}
+// todo - do it prettier
+mat-nav-list {
+  /deep/ .mat-list-item {
+    height: inherit;
+  }
+  .toc-root {
+    /deep/ .mat-list-item-content {
+      border-left: 1px solid $accent;
+      padding: 2px 10px;
+    }
+  }
+  .toc-sub {
+    /deep/ .mat-list-item-content {
+      border-left: 1px solid $accent;
+      padding: 2px 24px;
+    }
+  }
+}

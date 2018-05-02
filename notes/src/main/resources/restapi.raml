@@ -1,0 +1,102 @@
+#%RAML 1.0
+---
+title: Microservices REST
+baseUri: http://localhost:{port}/
+version: v1
+
+/api/notes:
+  description: Api responsible for notes handling. Notes Microservice, port 8091
+  get:
+    queryParameters:
+      user:
+        description: Username of requesting user
+        required: false
+        type: string
+      type:
+        description: Describes visibility level
+        required: true
+        enum: [owner,private,public]
+      quantity:
+        description: Limit the number of results.
+        required: false
+        type: integer
+  post:
+    headers:
+      Authorization:
+        description: Authorization schema information with token
+        example: |
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1MTUwMTE2NjIsInN1YiI6ImFkbWluIiwiY3JlYXRlZCI6MTUxNTAwODA2MjkyOX0.E-GDEwJC0MW4KRgQHIpvUgfJyk218SxPKbKp9EbrvK4"
+      Content-type:
+    body:
+      application/json:
+        type: |
+          {
+            "type" : "object",
+            "id" : "urn:jsonschema:pl:dkatszer:inz:notes:model:CreateNoteRequest",
+            "properties" : {
+              "noteName" : {
+                "type" : "string"
+              },
+              "accessLevel" : {
+                "type" : "string",
+                "enum": [
+                  "private",
+                  "friends",
+                  "public"
+                ]
+              },
+              "author" : {
+                "type" : "string"
+              }
+            }
+          }
+        example: |
+          {
+            "noteName": "some name",
+            "accessLevel": "private",
+            "author": "student"
+          }
+    responses:
+      200:
+        description: Id of newly created note.
+        body:
+          application/json:
+            type: number
+            example: |
+              24
+      401:
+        description: Unauthorized request
+  /{noteId}:
+    get:
+    post:
+    /sections:
+      get:
+      put:
+      /{sectionId}:
+        get:
+        put:
+        delete:
+        /toc:
+          get:
+/api/profiles/{username}:
+    description: Profiles management. Profiles Microservice, port 8092
+    get:
+      description: User's profile details
+    /friends:
+      get:
+        description: List of user's friends
+/api/auth/token:
+    description: Api responsible for security handling. Profiles Microservice, port 8092
+    post:
+      description: Generate token
+    /username:
+      description: Extract username from token
+      post:
+    /user:
+      description: Retrieve user basic security details
+      post:
+    /validation: Valid token
+      post:
+/token/auth:
+  description: Generatign token after credentials veryfication. Api Gateway, port 8090
+  post:

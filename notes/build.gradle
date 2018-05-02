@@ -1,0 +1,49 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+        mapstructVersion = "1.2.0.Final"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.ltgt.apt' version '0.8'
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+group 'inz'
+version '1.0-SNAPSHOT'
+
+
+sourceCompatibility = 1.9
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'com.h2database:h2'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    compile 'org.jsoup:jsoup:1.11.2'
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-jsonSchema', version: '2.9.2'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    apt "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+}
+tasks.withType(JavaCompile) {
+    options.compilerArgs = [
+            '-Amapstruct.suppressGeneratorTimestamp=true', //the creation of a time stamp in the @Generated annotation in the generated com.triphelper.mapper classes is suppressed.
+            '-Amapstruct.defaultComponentModel=spring' //the generated com.triphelper.mapper is a singleton-scoped Spring bean and can be retrieved via @Autowired
+    ]
+}

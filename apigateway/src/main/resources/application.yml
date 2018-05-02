@@ -1,0 +1,33 @@
+spring:
+  application.name: apigateway
+
+server:
+  port: 8090
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} --- [%thread] %-5level  --- [%logger{36}] - %msg%n"
+
+microservices:
+  notes:
+    url: http://localhost:8091
+  profiles:
+    url: http://localhost:8092
+
+zuul:
+  prefix: /api
+#  here we can add more options for example ignoring some services
+  routes:
+    notes:
+      url: http://localhost:8091/api/notes
+    profiles:
+      url: http://localhost:8092/api/profiles
+
+#Spring Cloud Zuul will automatically set the path to the application name
+#we can specify manually the path by property "path" example "path: /notes/**"
+
+ribbon.eureka.enabled: false
+#because we disabled default usage of eureka we have to manually specify service url below
+
+jwt:
+  header: Authorization

@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" fxLayout="row" fxLayoutAlign="center center">
+  <mat-radio-group fxLayout="column" [(ngModel)]="access" [ngModelOptions]="{standalone: true}" required>
+    <mat-radio-button value="private" checked>Private</mat-radio-button>
+    <mat-radio-button value="friends">Only Friends</mat-radio-button>
+    <mat-radio-button value="public">Public</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field>
+    <input matInput placeholder="Note name" [(ngModel)]="name" required [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+  <button mat-raised-button type="submit" color="primary">Create new</button>
+  <!--  [disabled]="!signupForm.form.valid"> -->
+</form>

@@ -1,0 +1,20 @@
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" color="primary" id="navbar">
+  <div class="leftNav" fxLayout="row">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active">
+      <img class="home-logo" src="../../../assets/img/logo.png">
+      <span>Home</span>
+    </a>
+    <a mat-button *ngFor="let link of links" [routerLink]="link.link" routerLinkActive="active"
+        fxLayout="column" fxLayoutAlign="center center" >
+      <span>{{ link.text }}</span>
+    </a>
+  </div>
+  <div class="rightNav" fxLayout="row">
+    <a mat-button routerLink="settings" routerLinkActive="active">
+      <span class="icon-wrapper">
+        <mat-icon>settings</mat-icon>
+      </span>
+    </a>
+    <button type="button" mat-raised-button color="accent" (click)="logout()">Logout</button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,13 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true"
+               [fixedInViewport]="true" [fixedTopGap]="64"
+               [fixedBottomGap]="0">
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let link of links" [routerLink]="link.link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"> {{ link.text }} </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

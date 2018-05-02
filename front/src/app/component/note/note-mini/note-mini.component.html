@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><b><span>Author: </span></b><span>{{note.author}}</span></mat-card-title>
+    <mat-card-subtitle>{{note.lastModification | date}}</mat-card-subtitle>
+  </mat-card-header>
+  <a matLine routerLink="/notes/{{note.noteId}}/sections/1">
+    <div class="note-mini">
+      <h4>{{note.title}}</h4>
+    </div>
+  </a>
+</mat-card>

@@ -1,0 +1,28 @@
+@import "../../../variables.scss";
+/*
+!! psuje scroll spy i scrollTo !!
+*/
+.sections-sidenav-container {
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.sections-sidenav{
+  position: fixed;
+  top: 60px;
+  width: 150px;
+  background-color: transparent;
+}
+
+.sidenav-content{
+  padding: 15px;
+}
+
+.header{
+  background-color: transparent;
+  padding-left: 0;
+}
+.active{
+  color: $warn;
+}
